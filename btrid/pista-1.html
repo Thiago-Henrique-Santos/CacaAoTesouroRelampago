@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Caça ao Tesouro Relâmpago - Pista</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @layer utilities {
+      .bg-relampago {
+        @apply bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900;
+      }
+      .shadow-relampago {
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.05), 0 0 50px rgba(0, 0, 0, 0.4);
+      }
+    }
+  </style>
+</head>
+<body class="bg-relampago min-h-screen flex flex-col justify-center items-center text-white px-6 py-10">
+  <main class="max-w-xl w-full bg-black bg-opacity-60 backdrop-blur-sm rounded-3xl shadow-relampago p-8 text-center select-none">
+    <h1 class="text-white text-4xl font-extrabold mb-6 drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]">
+      Checkpoint 1
+    </h1>
+
+    <!-- Formulário de senha -->
+    <form id="senhaForm" class="flex flex-col gap-4 items-center">
+      <label for="inputSenha" class="text-base sm:text-lg text-gray-100">Digite a senha para acessar esta pista:</label>
+      <input
+        id="inputSenha"
+        type="password"
+        placeholder="Senha da equipe"
+        class="p-3 rounded-xl text-black text-center text-lg font-semibold w-full max-w-xs"
+        required
+        autocomplete="off"
+      />
+      <button
+        type="submit"
+        class="bg-yellow-400 hover:bg-yellow-500 active:bg-yellow-600 text-black font-bold px-6 py-3 rounded-xl shadow-lg transition"
+      >
+        Acessar pista
+      </button>
+    </form>
+
+    <!-- Conteúdo da pista -->
+    <div id="conteudoPista" class="mt-10 hidden text-white">
+      <h2 class="text-3xl font-bold mb-4">Pista 1</h2>
+      <p class="text-white text-lg mb-8">
+        <span class="block text-green-500 mb-2">A primeira faísca do desafio acendeu!</span><br/>
+        <span class="block">Resolva o enigma abaixo para descobrir <strong>onde está escondido o QR Code</strong> da próxima pista:</span>
+      </p>
+
+      <blockquote class="italic text-yellow-500 text-base mb-6">
+        Sou feita para guardar, mas não sou uma caixa.<br />
+        Tenho portas que não se abrem, e prateleiras para segredos.<br />
+        O que sou eu?
+      </blockquote>
+
+      <p class="text-gray-300 text-sm">Vá até o local certo... a próxima pista te espera lá.</p>
+    </div>
+
+    <!-- Mensagem de erro -->
+    <div id="mensagemErro" class="mt-10 hidden">
+      <h2 class="text-2xl font-semibold text-red-400 mb-2">Caminho errado...</h2>
+      <p class="text-base text-red-200">
+        Esta trilha não pertence a você.<br />
+        Volte por onde veio e procure melhor sua rota.
+      </p>
+    </div>
+  </main>
+
+  <script>
+    const senhaEquipeAzul = 'dragão-azul';
+
+    const form = document.getElementById('senhaForm');
+    const inputSenha = document.getElementById('inputSenha');
+    const conteudoPista = document.getElementById('conteudoPista');
+    const mensagemErro = document.getElementById('mensagemErro');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const senha = inputSenha.value.trim();
+
+      if (senha === senhaEquipeAzul) {
+        form.classList.add('hidden');
+        conteudoPista.classList.remove('hidden');
+      } else {
+        form.classList.add('hidden');
+        mensagemErro.classList.remove('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
