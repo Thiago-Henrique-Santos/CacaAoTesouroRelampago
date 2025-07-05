@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start game</title>
+    <style>
+    /* Cores personalizadas no Tailwind */
+    @layer utilities {
+      .bg-azul-flash {
+        @apply bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-700;
+      }
+      .bg-vermelho-flash {
+        @apply bg-gradient-to-r from-red-500 via-pink-600 to-rose-700;
+      }
+      .shadow-azul-flash {
+        box-shadow: 0 0 20px #3b82f6, 0 0 30px #0ea5e9;
+      }
+      .shadow-vermelho-flash {
+        box-shadow: 0 0 20px #ef4444, 0 0 30px #f43f5e;
+      }
+    }
+  </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-900 via-purple-900 to-pink-900 min-h-screen flex flex-col justify-center items-center text-white px-4">
+  <h1 class="text-5xl sm:text-6xl font-extrabold mb-8 sm:mb-10 drop-shadow-lg text-center select-none">⚡ Caça ao Tesouro Relâmpago ⚡</h1>
+  <p class="text-lg sm:text-xl mb-10 sm:mb-16 max-w-lg text-center drop-shadow-md select-none">
+    Escolha seu time e comece a aventura eletrizante!
+  </p>
+
+  <div class="flex flex-col sm:flex-row gap-6 sm:gap-12 w-full max-w-md">
+    <button
+      class="bg-azul-flash shadow-azul-flash px-8 py-5 rounded-3xl text-2xl sm:text-3xl font-bold transition-transform hover:scale-105 active:scale-95 select-none flex-1"
+      onclick="selecionarTime('azul')"
+      aria-label="Escolher Equipe Azul"
+      type="button"
+    >
+      Equipe Azul
+    </button>
+    <button
+      class="bg-vermelho-flash shadow-vermelho-flash px-8 py-5 rounded-3xl text-2xl sm:text-3xl font-bold transition-transform hover:scale-105 active:scale-95 select-none flex-1"
+      onclick="selecionarTime('vermelho')"
+      aria-label="Escolher Equipe Vermelha"
+      type="button"
+    >
+      Equipe Vermelha
+    </button>
+  </div>
+
+  <script>
+    function selecionarTime(time) {
+      sessionStorage.setItem('timeSelecionado', time);
+      if (time === 'azul') {
+        window.location.href = 'btrid/pista-1.html';
+      } else if (time === 'vermelho') {
+        window.location.href = 'rtrid/pista-1.html';
+      }
+    }
+  </script>
+</body>
+</html>
